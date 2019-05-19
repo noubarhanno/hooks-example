@@ -22,16 +22,24 @@ const ResourceList = ({ resource }) => {
   // the above code is not allowed in useEffect
   // instead we can do 
 
-//   useEffect(() => {
-//       (async resource => {
-//           const response = await axios.get(`https://jsonplaceholder.typicode.com/${resource}`);
-//           setResources(response.data);
-//       })(resource);
-//   }, [resource]);
-
   useEffect(() => {
-    fetchResource(resource);
+      (async resource => {
+          const response = await axios.get(`https://jsonplaceholder.typicode.com/${resource}`);
+          setResources(response.data);
+      })(resource);
   }, [resource]);
+
+  // the code above is the same of doing below 
+  // () => console.log('hi')
+  // the code above is only defining a function but not calling it in order to call it 
+  // const hi = () => console.log('hi')
+  // or
+  // (() => console.log('hi'))()
+  // and this is exactly what we did in the useEffect above
+
+//   useEffect(() => {
+//     fetchResource(resource);
+//   }, [resource]);
 
   return <div>{resources.length}</div>;
 };
