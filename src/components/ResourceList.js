@@ -20,6 +20,15 @@ const ResourceList = ({ resource }) => {
         // const response = await axios.get(`URL/${resource}`);
   //})
   // the above code is not allowed in useEffect
+  // instead we can do 
+
+//   useEffect(() => {
+//       (async resource => {
+//           const response = await axios.get(`https://jsonplaceholder.typicode.com/${resource}`);
+//           setResources(response.data);
+//       })(resource);
+//   }, [resource]);
+
   useEffect(() => {
     fetchResource(resource);
   }, [resource]);
